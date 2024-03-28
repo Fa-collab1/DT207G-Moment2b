@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponies</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/ponies">Ponies</a></li>
+                <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="welcome">
+            <h1>Ponies</h1>
+            <% if (ponyList && ponyList.length > 0) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Syllabus</th>
+                            <th>Progression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% ponyList.forEach(function(pony) { %>
+                            <tr>
+                                <td><%= pony.name %></td>
+                                <td><%= pony.email %></td>
+                                <td><%= pony.courseCode %></td>
+                                <td><%= pony.courseName %></td>
+                                <td><a href="<%= pony.syllabus %>" target="_blank">Syllabus</a></td>
+                                <td><%= pony.progression %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No ponies found.</p>
+            <% } %>
+        </section>
+<ul>
+        <li><a href="/ponies/add">Add pony</a></li>
+    </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 joni2307@student.miun.se All rights reserved.</p>
+    </footer>
+</body>
+</html>
