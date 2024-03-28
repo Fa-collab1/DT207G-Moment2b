@@ -11,19 +11,15 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/ponies">Ponies</a></li>
+                <li><a href="/courses">Courses</a></li>
                 <li><a href="/about">About</a></li>
           </ul>
         </nav>
     </header>
     <main>
         <section class="welcome">
-            <h1>Add pony</h1>
-<form method="post" action="/ponies/add">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required value="<%= newName %>"><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required value="<%= newEmail %>"><br><br>
+            <h1>Add course</h1>
+<form method="post" action="/courses/add">
     <label for="coursecode">Course Code:</label>
 <input type="text" id="coursecode" name="courseCode" required value="<%= newCourseCode %>"><br>
 
@@ -37,7 +33,7 @@
 <textarea id="progression" name="progression" required><%= newProgression %></textarea><br><br>
 
     
-    <button type="submit">Add pony</button>
+    <button type="submit">Add course</button>
 </form>
 <% if (locals.message) { %>
     <p><%= locals.message %></p>
