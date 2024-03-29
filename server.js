@@ -19,9 +19,9 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 app.get("/courses", (req, res) => {
-    let successMessage = [];
+    let successMessage = "";
     if (req.query.success === '1') {
-        successMessage.push("Course successfully added!");
+        successMessage="Course successfully added!";
     }
     res.render("courses", { courseList, successMessage });
 });
