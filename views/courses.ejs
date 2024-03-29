@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>courses</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -13,13 +15,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/courses">Courses</a></li>
                 <li><a href="/about">About</a></li>
-          </ul>
+            </ul>
         </nav>
     </header>
     <main>
         <section class="welcome">
             <h1>Courses</h1>
-            <% if (courseList && courseList.length > 0) { %>
+            <% if (courseList && courseList.length> 0) { %>
                 <table>
                     <thead>
                         <tr>
@@ -32,24 +34,38 @@
                     <tbody>
                         <% courseList.forEach(function(course) { %>
                             <tr>
-                                <td><%= course.courseCode %></td>
-                                <td><%= course.courseName %></td>
+                                <td>
+                                    <%= course.courseCode %>
+                                </td>
+                                <td>
+                                    <%= course.courseName %>
+                                </td>
                                 <td><a href="<%= course.syllabus %>" target="_blank">link</a></td>
-                                <td><%= course.progression %></td>
+                                <td>
+                                    <%= course.progression %>
+                                </td>
                             </tr>
-                        <% }); %>
+                            <% }); %>
                     </tbody>
                 </table>
-            <% } else { %>
-                <p>No courses found.</p>
-            <% } %>
-        </section>
-<ul>
-        <li><a href="/courses/add">Add course</a></li>
-    </ul>
+                <% } else { %>
+                    <p>No courses found.</p>
+                    <% } %>
+                    <% if (successMessage.length>0) { %>
+                        <p>
+                            <%= successMessage %>
+                        </p>
+                        <% }; %>
+            
+                </section>
+
+                <ul>
+                    <li><a href="/courses/add">Add course</a></li>
+                </ul>
     </main>
     <footer>
         <p>&copy; 2024 joni2307@student.miun.se All rights reserved.</p>
     </footer>
 </body>
+
 </html>

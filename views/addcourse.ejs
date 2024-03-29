@@ -35,8 +35,10 @@
     
     <button type="submit">Add course</button>
 </form>
-<% if (locals.message) { %>
-    <p><%= locals.message %></p>
+<% if (locals.message && locals.message.length) { %>
+    <% locals.message.forEach(function(msg) { %>
+        <p><%= msg %></p>
+    <% }); %>
 <% } %>
 
 
