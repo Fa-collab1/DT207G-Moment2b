@@ -27,11 +27,10 @@
 <input type="text" id="coursename" name="courseName" required value="<%= newCourseName %>"><br>
 
 <label for="syllabus">Syllabus:</label>
-<textarea id="syllabus" name="syllabus" required><%= newSyllabus %></textarea><br>
+<input type="url" id="syllabus" name="syllabus" required value="<%= newSyllabus %>"><br>
 
 <label for="progression">Progression:</label>
-<textarea id="progression" name="progression" required><%= newProgression %></textarea><br><br>
-
+<input type="text" id="progression" name="progression" required value="<%= newProgression %>"><br>
     
     <button type="submit">Add course</button>
 </form>
