@@ -20,7 +20,7 @@ db.serialize(() => {
     courseCode TEXT NOT NULL,
     courseName TEXT NOT NULL,
     syllabus TEXT NOT NULL,
-    progression TEXT NOT NULL,
+    progression CHAR(1) NOT NULL,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )`);
 

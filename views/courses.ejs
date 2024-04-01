@@ -20,6 +20,15 @@
     <main>
         <section class="welcome">
             <h1>Courses</h1>
+
+            <ul class="extraNavigation">
+                <li><a href="/courses/add">Press here to add a course</a></li>
+                <% if (courseList && courseList.length> 0) { %>
+                <li class="tip">Click on a course code&#x2B07; to edit a course</li>
+                <% }; %>
+            </ul>
+
+
             <% if (courseList && courseList.length> 0) { %>
                 <table>
                     <thead>
@@ -58,10 +67,6 @@
             
                 </section>
 
-                <ul>
-                    <li><a href="/courses/add">Click here to add a course</a></li>
-                    <li class="tip">Click a course code to edit a course</li>
-                </ul>
     </main>
     <footer>
         <p>&copy; 2024 <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.</p>
