@@ -57,6 +57,13 @@ app.get("/about", (req, res) => {
     res.render("about"); // Rendera "About" sidan
 });
 
+// Route för "start" sidan som omdirigerar till "courses" sidan
+app.get("/", (req, res) => {
+    res.redirect("courses"); // Rendera "Courses" sidan
+});
+
+
+
 // Route för att rendera sidan för att lägga till ny kurs
 app.get("/courses/add", (req, res) => {
     res.render("addcourse", { message: [], newCourseCode: "", newCourseName: "", newSyllabus: "", newProgression: "", success: req.query.success });
