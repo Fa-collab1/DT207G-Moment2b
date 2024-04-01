@@ -1,1 +1,3 @@
 node_modules/
+courses.db
+views/index.ejs

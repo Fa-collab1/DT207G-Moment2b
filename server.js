@@ -9,11 +9,6 @@ app.use(express.urlencoded({ extended: true })); // Middleware för att tolka UR
 const port = 3000; // Ange portnummer för servern
 
 
-// Route för startsidan
-app.get("/", (req, res) => {
-    res.render("index"); // Rendera startsidan
-});
-
 // Route för att hämta kurser från databasen
 app.get("/courses", (req, res) => {
     
@@ -68,31 +63,47 @@ app.get("/courses/add", (req, res) => {
     // Rendera sidan för att lägga till kurs med tomma fält och eventuella meddelanden
 });
 
-// Route för att hantera inlämning av ny kurs
+// Route för att hantera tillägg av ny kurs
 app.post("/courses/add", (req, res) => {
     const { courseCode, courseName, syllabus, progression } = req.body; // Extrahera data från begäran
 
     // Valideringslogik för inmatningsfälten
     let message = dataValidation(courseCode, courseName, syllabus, progression);
 
-    if (message.length === 0) {
-        // Om valideringen lyckas, lägg till kursen i databasen
-        const sql = `INSERT INTO courses (courseCode, courseName, syllabus, progression) VALUES (?, ?, ?, ?)`;
-        const params = [courseCode, courseName, syllabus, progression];
-        db.run(sql, params, function (err) {
-            if (err) {
-                console.error(err.message);
-                message.push("Database failure!"); // Lägg till felmeddelande om databasfel
-                res.render("addcourse", { message: message, newCourseCode: courseCode, newCourseName: courseName, newSyllabus: syllabus, newProgression: progression});        
-                return;
+    // Kolla om kurskoden redan finns i databasen
+    db.get("SELECT COUNT(*) AS count FROM courses WHERE courseCode = ?", [courseCode.toUpperCase()], (err, row) => {
+        if (err) {
+            console.error('Error checking course code existence', err);
+            message.push("Database failure!"); // Lägg till felmeddelande om databasfel
+            res.render("addcourse", { message, newCourseCode: courseCode.toUpperCase(), newCourseName: courseName, newSyllabus: syllabus, newProgression: progression.toUpperCase() });
+            return;
+        }
+        if (row.count > 0) {
+            // Om kurskoden redan finns, rendera sidan för att lägga till kurs med ett felmeddelande
+            message = ["This course code already exists in the database!"]; // Uppdatera meddelandearrayen med felmeddelande
+            res.render("addcourse", { message, newCourseCode: courseCode.toUpperCase(), newCourseName: courseName, newSyllabus: syllabus, newProgression: progression.toUpperCase() });
+        } else {
+            // Om kurskoden inte finns, fortsätt med att lägga till den nya kursen i databasen
+            if (message.length === 0) {
+                const sql = `INSERT INTO courses (courseCode, courseName, syllabus, progression) VALUES (?, ?, ?, ?)`;
+                const params = [courseCode.toUpperCase(), courseName, syllabus, progression.toUpperCase()];
+                db.run(sql, params, function (err) {
+                    if (err) {
+                        console.error(err.message);
+                        message.push("Database failure!"); // Lägg till felmeddelande om databasfel
+                        res.render("addcourse", { message, newCourseCode: courseCode, newCourseName: courseName, newSyllabus: syllabus, newProgression: progression });
+                        return;
+                    }
+                    res.redirect("/courses?success=1"); // Omdirigera till sidan för kurser med framgångsmeddelande
+                });
+            } else {
+                // Om valideringen misslyckas, rendera sidan för att lägga till kurs med felmeddelanden
+                res.render("addcourse", { message, newCourseCode: courseCode, newCourseName: courseName, newSyllabus: syllabus, newProgression: progression });
             }
-            res.redirect("/courses?success=1"); // Omdirigera till sidan för kurser med framgångsmeddelande
-        });
-    } else {
-        // Om valideringen misslyckas, rendera sidan för att lägga till kurs med felmeddelanden
-        res.render("addcourse", { message, newCourseCode: courseCode, newCourseName: courseName, newSyllabus: syllabus, newProgression: progression});
-    }
+        }
+    });
 });
+
 
 // Route för att redigera en befintlig kurs
 app.get('/courses/edit/:id', (req, res) => {
@@ -147,7 +158,7 @@ app.post('/courses/update/:id', (req, res) => {
     } else {
         // Om valideringen lyckas, uppdatera kursen i databasen
         db.run(`UPDATE courses SET courseCode = ?, courseName = ?, syllabus = ?, progression = ?, created = ? WHERE id = ?`,
-            [courseCode, courseName, syllabus, progression, created, id],
+            [courseCode.toUpperCase(), courseName, syllabus, progression.toUpperCase(), created, id],
             function (err) {
                 if (err) {
                     console.error('Error updating course in database', err);
@@ -166,11 +177,15 @@ app.listen(port, () => { console.log(`Server running on port ${port}`); });
 // Funktion för att validera inmatningsfälten för en ny kurs
 function dataValidation(courseCode, courseName, syllabus, progression) {
     let message = [];
-    if (courseCode.length < 3 || courseName.length < 3 || syllabus.length < 3) {
-        message.push("All field contents (except Progression) must be at least 3 characters long");
+    if (courseName.length < 0) {
+        message.push("Course name must be at least 3 characters long");
     }
     if (progression.length !== 1) {
         message.push("Progression must be exactly 1 character long");
     }
+    if (courseCode.length !== 6) {
+        message.push("Course Code must be exactly 6 characters long");
+    }
+
     return message;
 }
