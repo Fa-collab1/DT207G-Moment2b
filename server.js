@@ -6,7 +6,7 @@ const db = require('./database'); // Importera anslutning till databasen
 app.set("view engine", "ejs"); // Ange EJS som vy-motorn
 app.use(express.static("public")); // Ange mapp för statiska filer
 app.use(express.urlencoded({ extended: true })); // Middleware för att tolka URL
-const port = 3000; // Ange portnummer för servern
+const port = process.env.PORT; // Ange portnummer för servern
 
 
 // Route för att hämta kurser från databasen
