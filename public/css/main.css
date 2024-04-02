@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+ 
+}
+
+
 /* Grundläggande stil för sidan */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -5,15 +12,53 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    max-width: 100vw;
 }
+
+.Pagecontent {
+    min-height: 94vh;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+
 
 /* stil för sidhuvudet */
 header {
     background-color: #444;
     color: #fff;
-    padding: 1rem 0;
+    padding: 0.5vh;
     text-align: center;
+    min-height: 4.5vh;
+    max-height: 4.5vh;
+    font-size: 1.3vh;
+    text-align: left;
 }
+
+
+/* stil för sidfoten */
+footer {
+    background-color: #444;
+    color: white;
+    text-align: center;
+    padding: 1vh;
+    width: 100%;
+    min-height: 6vh;
+    max-height: 6vh;
+    font-size: 1.3vh;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* stil för navigationslänkar */
 .nav-links {
@@ -31,36 +76,31 @@ header {
     text-decoration: none;
 }
 
-/* stil för sidfoten */
-footer {
-    background-color: #444;
-    color: white;
-    text-align: center;
-    padding: 1vw;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 /* stil för välkomstsektionen (ingressen)*/
 .welcome {
     font-family: 'Arial', sans-serif;
-    margin: 2vw;
-    padding: 2vw;
+    margin: 2vh;
+    padding: 2vh;
     background-color: #f9f9f9;
-    border-radius: 1vw;
-    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
-    text-align: center;
+    border-radius: 1vh;
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
 /* stil för tabell */
 table {
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
     margin-top: 2vw;
+    font-size: smaller;
+    
 }
 
-th, td {
+
+
+
+th,
+td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -84,6 +124,35 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Responsive styling */
+@media only screen and (max-width: 600px) {
+
+    /* stil för tabeller för smala skärmar */
+    th,
+    td {
+        padding: 1%;
+        font-size: xx-small;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+
+    table {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+
+    header, footer {
+        font-size: 3vh;
+        margin: 0;
+        padding: 00.01vh;
+        min-height: 10vh;
+    }
+}
+
 
 /* stil för formulär */
 form {
@@ -130,4 +199,5 @@ p {
 }
 
 .extraNavigation {
-text-align: left;}
+    text-align: left;
+}

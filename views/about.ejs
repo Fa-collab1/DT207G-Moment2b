@@ -1,84 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/courses">Courses</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="welcome">
-            <h1>About this Website</h1>
-            <p>This website serves as a platform to be able to add/edit/update a course list database. 
-                Each course contains a course code, a name, a syllabus link, and a progression level.</p>
-            <p>The database server used for this website is SQLite3.</p>
-            <h2>Conclusions</h2>
-            <p>Throughout the development of this website, several conclusions were drawn:</p>
-            <ul>
-                <li>SQLite3 is a lightweight and efficient database solution for small to medium-scale web applications. It was very easy to start using this one!</li>
-                <li>Express.js provides a framework for building web servers and handling HTTP requests.</li>
-                <li>Using EJS as the view engine allows for dynamic content generation and reuse of HTML templates.</li>
-                <li>Client-side and server-side validation are essential for ensuring data integrity and preventing errors.</li>
-                <li>Proper error handling and feedback mechanisms enhance the user experience and provide helpful guidance in case of issues.</li>
-            </ul>
 
-        </section>
-        <section class="er-diagram">
-            <h2>Entity-Relationship (ER) Diagram</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Column</th>
-                        <th>Data Type</th>
-                        <th>Constraints</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>id</td>
-                        <td>INTEGER</td>
-                        <td>Primary Key, Auto-Increment</td>
-                    </tr>
-                    <tr>
-                        <td>courseCode</td>
-                        <td>TEXT</td>
-                        <td>Not Null</td>
-                    </tr>
-                    <tr>
-                        <td>courseName</td>
-                        <td>TEXT</td>
-                        <td>Not Null</td>
-                    </tr>
-                    <tr>
-                        <td>syllabus</td>
-                        <td>TEXT</td>
-                        <td>Not Null</td>
-                    </tr>
-                    <tr>
-                        <td>progression</td>
-                        <td>CHAR(1)</td>
-                        <td>Not Null</td>
-                    </tr>
-                    <tr>
-                        <td>created</td>
-                        <td>TIMESTAMP</td>
-                        <td>Default: CURRENT_TIMESTAMP</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+<body>
+    <main>
+
+        <div class="Pagecontent">
+            <header>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="welcome">
+                <h1>About this Website</h1>
+                <p>This website serves as a platform to be able to add/edit/update a course list database.
+                    Each course contains a course code, a name, a syllabus link, and a progression level.</p>
+                <p>The database server used for this website is SQLite3.</p>
+                <h2>Conclusions</h2>
+                <p>Throughout the development of this website, several conclusions were drawn:</p>
+                <ul>
+                    <li>SQLite3 is a lightweight and efficient database solution for small to medium-scale web
+                        applications. It was very easy to start using this one!</li>
+                    <li>Express.js provides a framework for building web servers and handling HTTP requests.</li>
+                    <li>Using EJS as the view engine allows for dynamic content generation and reuse of HTML templates.
+                    </li>
+                    <li>Client-side and server-side validation are essential for ensuring data integrity and preventing
+                        errors.</li>
+                    <li>Proper error handling and feedback mechanisms enhance the user experience and provide helpful
+                        guidance in case of issues.</li>
+                </ul>
+
+            </section>
+            <section class="er-diagram">
+                <h2>Entity-Relationship (ER) Diagram</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Column</th>
+                            <th>Data Type</th>
+                            <th>Constraints</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>INTEGER</td>
+                            <td>Primary Key, Auto-Increment</td>
+                        </tr>
+                        <tr>
+                            <td>courseCode</td>
+                            <td>TEXT</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>courseName</td>
+                            <td>TEXT</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>syllabus</td>
+                            <td>TEXT</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>progression</td>
+                            <td>CHAR(1)</td>
+                            <td>Not Null</td>
+                        </tr>
+                        <tr>
+                            <td>created</td>
+                            <td>TIMESTAMP</td>
+                            <td>Default: CURRENT_TIMESTAMP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <footer>
+            <p>&copy; 2024 <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.
+            </p>
+        </footer>
     </main>
-    <footer>
-        <p>&copy; 2024 <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.</p>
-    </footer>
 </body>
+
 </html>

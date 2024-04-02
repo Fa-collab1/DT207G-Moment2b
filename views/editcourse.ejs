@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Course</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/courses">Courses</a></li>
-                <li><a href="/about">About</a></li>
-          </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="welcome">
-            <h1>Edit Course</h1>
-            <form action="/courses/update/<%= course.id %>" method="post">
-                <div class="form-group">
-                    <label for="id">Id:</label>
-                    <input class="readonly" type="text" id="id" name="id" value="<%= course.id %>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="courseCode">Course Code: </label>
-                    <input class="readonly" type="text" id="courseCode" name="courseCode" value="<%= course.courseCode %>" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="courseName">Course Name:</label>
-                    <input type="text" id="courseName" name="courseName" value="<%= course.courseName %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="syllabus">Syllabus URL:</label>
-                    <input type="url" id="syllabus" name="syllabus" value="<%= course.syllabus %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="progression">Progression:</label>
-                    <input type="text" id="progression" name="progression" value="<%= course.progression %>" required>
-                </div>
-                <div class="form-group">
-                    <label for="created">Created:</label>
-                    <input class="readonly" type="text" id="created" name="created" value="<%= course.created %>" readonly>
-                </div>
-                
-                <button type="submit">Save Changes</button>
-            </form>
-            <form action="/courses/delete/<%= course.id %>" method="post">
-                <button type="submit" class="delete-btn">Delete Course</button>
-                <% if (locals.message && locals.message.length) { %>
-                    <% locals.message.forEach(function(msg) { %>
-                        <p><%= msg %></p>
-                    <% }); %>
-                <% } %>
-            </form>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.</p>
-    </footer>
+<body>
+    <main>
+        <div class="Pagecontent">
+            <header>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+
+            <section class="welcome">
+                <h1>Edit Course</h1>
+                <form action="/courses/update/<%= course.id %>" method="post">
+                    <div class="form-group">
+                        <label for="id">Id:</label>
+                        <input class="readonly" type="text" id="id" name="id" value="<%= course.id %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCode">Course Code: </label>
+                        <input class="readonly" type="text" id="courseCode" name="courseCode"
+                            value="<%= course.courseCode %>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseName">Course Name:</label>
+                        <input type="text" id="courseName" name="courseName" value="<%= course.courseName %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="syllabus">Syllabus URL:</label>
+                        <input type="url" id="syllabus" name="syllabus" value="<%= course.syllabus %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="progression">Progression:</label>
+                        <input type="text" id="progression" name="progression" value="<%= course.progression %>"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="created">Created:</label>
+                        <input class="readonly" type="text" id="created" name="created" value="<%= course.created %>"
+                            readonly>
+                    </div>
+
+                    <button type="submit">Save Changes</button>
+                </form>
+                <form action="/courses/delete/<%= course.id %>" method="post">
+                    <button type="submit" class="delete-btn">Delete Course</button>
+                    <% if (locals.message && locals.message.length) { %>
+                        <% locals.message.forEach(function(msg) { %>
+                            <p>
+                                <%= msg %>
+                            </p>
+                            <% }); %>
+                                <% } %>
+                </form>
+            </section>
+
+        </div>
+        <footer>
+            <p>&copy; 2024 <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.
+            </p>
+        </footer>
+    </main>
 </body>
+
 </html>
