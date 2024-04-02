@@ -130,7 +130,7 @@ a:hover {
 form {
     margin: 1vw;
     text-align: center;
-    width: 50%;
+    width: 50% !important;
 }
 
 form label {
@@ -205,7 +205,7 @@ p {
 }
 
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1000px) {
 
     form {
         width: 100%;
