@@ -178,6 +178,23 @@ app.post('/courses/update/:id', (req, res) => {
     }
 });
 
+// Route för att hämta och visa listan över mina kurser från databasen
+app.get("/mycourses", (req, res) => {
+    // Array för att lagra data från databasen
+    let rows = [];
+
+    // Hämta alla kurser från databasen och sortera dem efter avslutningsdatum
+    db.all("SELECT * FROM mycourses ORDER BY completionDate", [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.redirect("/mycourses?success=0"); // Omdirigera till sidan för kurser med ett felmeddelande
+            return;
+        }
+        res.render("mycourses", { courseList: rows }); // Rendera sidan med kurslistan
+    });
+});
+
+
 // Starta servern och lyssna på angiven port
 app.listen(port, () => { console.log(`Server running on port ${port}`); });
 
