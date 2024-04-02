@@ -125,42 +125,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Responsive styling */
-@media only screen and (max-width: 600px) {
-
-    /* stil för tabeller för smala skärmar */
-    th,
-    td {
-        padding: 1%;
-        font-size: xx-small;
-    }
-}
-
-@media only screen and (max-width: 1600px) {
-
-    table {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 1600px) {
-
-    form {
-        width: 100%;
-    }
-}
-
-
-@media only screen and (max-height: 600px) {
-
-    header, footer {
-        font-size: 3vh;
-        margin: 0;
-        padding: 00.01vh;
-        min-height: 10vh;
-    }
-}
-
 
 /* stil för formulär */
 form {
@@ -209,4 +173,41 @@ p {
 
 .extraNavigation {
     text-align: left;
+}
+
+/* Responsive styling */
+@media only screen and (max-width: 600px) {
+
+    /* stil för tabeller för smala skärmar */
+    th,
+    td {
+        padding: 1%;
+        font-size: xx-small;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+
+    table {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-height: 600px) {
+
+    header, footer {
+        font-size: 3vh;
+        margin: 0;
+        padding: 00.01vh;
+        min-height: 10vh;
+    }
+}
+
+
+@media only screen and (max-width: 1600px) {
+
+    form {
+        width: 100%;
+    }
 }
