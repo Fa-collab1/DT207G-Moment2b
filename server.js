@@ -126,7 +126,7 @@ app.get('/courses/edit/:id', (req, res) => {
 
         if (course) {
             // Om kursen finns, rendera sidan för att redigera kurs med kursinformation och eventuellt framgångsmeddelande
-            res.render('editCourse', { course, success: req.query.success });
+            res.render('editcourse', { course, success: req.query.success });
         } else {
             // Om kursen inte hittas, omdirigera till sidan för kurser med felmeddelande
             res.redirect('/courses?success=-2');
@@ -161,7 +161,7 @@ app.post('/courses/update/:id', (req, res) => {
 
     if (message.length > 0) {
         // Om valideringen misslyckas, rendera sidan för att redigera kurs med felmeddelanden
-        res.render("editCourse", { message, course: { id, courseCode, courseName, syllabus, progression, created }, success: req.query.success });
+        res.render("editcourse", { message, course: { id, courseCode, courseName, syllabus, progression, created }, success: req.query.success });
     } else {
         // Om valideringen lyckas, uppdatera kursen i databasen
         db.run(`UPDATE courses SET courseCode = ?, courseName = ?, syllabus = ?, progression = ?, created = ? WHERE id = ?`,
