@@ -50,9 +50,11 @@ footer {
     font-size: 1.3vh;
 }
 
-
-
-
+.currentPage {
+    border: #f9f9f9 1px solid;
+    padding: 4px;
+ 
+}
 
 
 
@@ -93,7 +95,26 @@ table {
     border-collapse: collapse;
     margin-top: 2vw;
     font-size: smaller;
-    
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+    border-radius: 1vh;
+}
+
+/* Ställer in bredden på varje kolumn individuellt */
+#workExperienceList th:nth-child(1), #workExperienceList td:nth-child(1) { width: 20%; } /* Exempel: Företagsnamn */
+#workExperienceList th:nth-child(2), #workExperienceList td:nth-child(2) { width: 20%; } /* Exempel: Jobbtitel */
+#workExperienceList th:nth-child(3), #workExperienceList td:nth-child(3) { width: 10%; } /* Exempel: Plats */
+#workExperienceList th:nth-child(4), #workExperienceList td:nth-child(4) { width: 10%; } /* Exempel: Startdatum */
+#workExperienceList th:nth-child(5), #workExperienceList td:nth-child(5) { width: 10%; } /* Exempel: Slutdatum */
+#workExperienceList th:nth-child(6), #workExperienceList td:nth-child(6) { width: 30%; } /* Exempel: Beskrivning */
+
+
+textarea {
+    width: 97%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
 }
 
 

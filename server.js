@@ -2,12 +2,186 @@
 const express = require('express'); // Importera Express.js
 const app = express(); // Skapa en Express-app
 const db = require('./database'); // Importera anslutning till databasen
-
 app.set("view engine", "ejs"); // Ange EJS som vy-motorn
 app.use(express.static("public")); // Ange mapp för statiska filer
 app.use(express.urlencoded({ extended: true })); // Middleware för att tolka URL
-const port = process.env.PORT; // Ange portnummer för servern
-//const port = 3000; // Ange portnummer för servern
+const methodOverride = require('method-override'); // Importera method-override för att använda PUT och DELETE
+app.use(methodOverride('_method')); // Middleware för att använda PUT och DELETE
+
+// Dynamisk import av node-fetch
+let fetch;
+import('node-fetch').then(({ default: fetchImport }) => {
+  fetch = fetchImport;
+  
+}).catch(err => console.error('Failed to load node-fetch', err));
+
+
+
+const port = process.env.PORT || 3000;
+
+
+// Route för att hämta arbetslivserfarenhet från databasen
+app.get("/workexperience", (req, res) => {
+    // Hämta arbetslivserfarenhet mha Fetch API-anrop
+    fetch('https://jn2307-api-server-8db335f8b5ca.herokuapp.com/get')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error fetching work experience');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const message = "Work experience successfully fetched!";
+            res.render("workexperience", { workExperienceList: data, message });
+        })
+        .catch(error => {
+            // Hantera fel här
+            const message = "Error fetching work experience!";
+            console.error(error);
+            res.render("workexperience", { workExperienceList: [], message });
+        });
+});
+
+
+
+
+// Route för att redigera en befintlig erfarenhetspost
+app.get('/workexperience/edit/:id', (req, res) => {
+    const { id } = req.params; // Extrahera erfarenhets-ID från URL:en
+
+    // Hämta arbetslivserfarenhet mha Fetch API GET-begäran
+    fetch(`https://jn2307-api-server-8db335f8b5ca.herokuapp.com/get/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error fetching work experience');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const message = "Work experience successfully fetched!";
+            res.render("editworkexperience", { workExperience: data, message });
+        })
+        .catch(error => {
+            const message = "Error fetching work experience!";
+            console.error(error);
+            res.render("workexperience", { workExperienceList: [], message });
+        });
+});
+
+// Route för att ta bort en befintlig erfarenhetspost
+app.delete('/workexperience/delete/:id', (req, res) => {
+    const { id } = req.params; // Extrahera erfarenhets-ID från URL:en
+
+    // Ta bort arbetslivserfarenhet mha Fetch API DELETE-begäran
+    fetch(`https://jn2307-api-server-8db335f8b5ca.herokuapp.com/delete/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error deleting work experience');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Efter framgångsrik radering, omdirigera till en annan sida
+        res.redirect('/workexperience');
+    })
+    .catch(error => {
+        console.error(error);
+        // implementera sedan en logik för att hantera fel här
+        res.redirect('/error-page-or-retry');
+    });
+});
+
+app.post('/workexperience/save', (req, res) => {
+    const { companyname, jobtitle, location, startdate, enddate, description } = req.body;
+
+    fetch('https://jn2307-api-server-8db335f8b5ca.herokuapp.com/post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            companyname, 
+            jobtitle, 
+            location, 
+            startdate,
+            enddate: enddate ? enddate : null, // Om enddate finns, använd det, annars använd null
+            description: description ? description : null,
+        })
+    }) 
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.message);
+        res.redirect('/workexperience');
+    })
+    .catch(error => {
+        console.error('There was a problem with your fetch operation:', error);
+        res.status(500).send("An error occurred while saving the work experience.");
+    });
+});
+
+
+app.get('/workexperience/add', (req, res) => {
+    // Rendera en vy med ett formulär för att lägga till ny arbetslivserfarenhet
+    res.render('addworkexperience', { message: [] })  
+    });
+
+
+app.put('/workexperience/put/:id', (req, res) => {
+    const { id } = req.params; // Extrahera erfarenhets-ID från URL:en
+    const data = {
+        companyname: req.body.companyname,
+        jobtitle: req.body.jobtitle,
+        location: req.body.location,
+        startdate: req.body.startdate,
+        enddate: req.body.enddate ? req.body.enddate : null,
+        description: req.body.description ? req.body.description : null,
+    };
+
+    // Ändra en arbetslivserfarenhet mha Fetch API PUT-begäran
+    fetch(`https://jn2307-api-server-8db335f8b5ca.herokuapp.com/put/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data) // Skicka datan som en JSON-sträng
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error updating work experience');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Efter framgångsrik uppdatering, omdirigera till en annan sida
+        res.redirect('/workexperience');
+    })
+    .catch(error => {
+        console.error(error);
+        // Implementera sedan en logik för att hantera fel här
+        res.redirect('/error-page-or-retry');
+    });
+});
+
+
+
+
+
+
+
+
+
+//här under är det gammal kod för kursdatabasen
+
+
+
+
 
 // Route för att hämta kurser från databasen
 app.get("/courses", (req, res) => {
@@ -213,3 +387,7 @@ function dataValidation(courseCode, courseName, syllabus, progression) {
 
     return message;
 }
+
+
+
+

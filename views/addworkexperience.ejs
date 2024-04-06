@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add work experience</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+
+<body>
+    <main>
+        <div class="Pagecontent">
+            <header>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/mycourses">My courses</a></li>
+                        <li class="currentPage"><a href="/workexperience">Work experience</a></li>
+
+
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="welcome">
+                <h1>Add Work Experience</h1>
+                <form action="/workexperience/save" method="post">
+                    <div class="form-group">
+                        <label for="companyname">Company Name:</label>
+                        <input type="text" id="companyname" name="companyname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobtitle">Job Title:</label>
+                        <input type="text" id="jobtitle" name="jobtitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startdate">Start Date:</label>
+                        <input type="date" id="startdate" name="startdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enddate">End Date:</label>
+                        <input type="date" id="enddate" name="enddate">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" ></textarea>
+                    </div>
+                    <button type="submit">Add Work Experience</button>
+                </form>
+            </section>
+            
+        </div>
+        <footer>
+            <p>&copy; <a href="mailto:joni2307@student.miun.se">joni2307@student.miun.se</a> All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
