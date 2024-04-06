@@ -58,20 +58,13 @@
                                             <td><%= experience.jobtitle %></td>
                                             <td><%= experience.location %></td>
                                             <td>
-                                                <% 
-                                                var startDate = new Date(experience.startdate);
-                                                var formattedStartDate = startDate.getFullYear().toString().slice(-4) + '-' + ('0' + (startDate.getMonth() + 1)).slice(-2);
-                                                %>
-                                                <%= formattedStartDate %>
+                                                <%= experience.startdate %>
                                             </td>
                                             <td>
-                                                <% if (experience.enddate) { 
-                                                var endDate = new Date(experience.enddate);
-                                                var formattedEndDate = endDate.getFullYear().toString().slice(-4) + '-' + ('0' + (endDate.getMonth() + 1)).slice(-2);
-                                                %>
-                                                <%= formattedEndDate %>
+                                                <% if (experience.enddate) { %>
+                                                    <%= experience.enddate %>
                                                 <% } else { %>
-                                                Ongoing
+                                                    Ongoing
                                                 <% } %>
                                             </td>
                                             <td><%= experience.description ? experience.description : '' %></td>

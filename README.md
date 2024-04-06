@@ -1,3 +1,24 @@
+Ny del: [Work Experience Management App]
+
+
+ska innehålla en README-fil med beskrivning av lösningen samt eventuellt webblänk(ar) till publicerade laborationer för testkörning.
+Det ska finnas en README-fil som ger en beskrivning av din webbapplikation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tidigare del: [Course Management App]
+
+
 # Course Management App
 
 En webbapplikation för hantering av kurser med SQLite-databasintegration.
