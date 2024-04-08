@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <script src="/js/toggleMenu.js"></script>
+</head>
+<body>
+    <main>
+        <div class="Pagecontent">
+            <header>
+                <nav>
+                    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+                    <ul class="nav-links">
+                        <li><a href="/workexperience">Work Experience</a></li>
+                        <li class="currentPage"><a href="/aboutwe">About Work Experience</a></li>
+                        <li class="divider">❖</li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/mycourses">My Courses</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </header>
+        
+                        <section class="welcome">
+                            <h1>About This Website</h1>
+                            <p>This website is developed as a tool for managing and displaying work experiences, built with Node.js, Express, and EJS templates. The site is an educational project that demonstrates how to build web applications and integrate external API calls.</p>
+                        </section>
+            
+                        <section class="database-info">
+                            <h2>Database Server Information</h2>
+                            <p>The site uses external API calls to communicate with a server that handles data storage and retrieval. This provides a flexible way to manage data without an internal database.</p>
+                        </section>
+            
+                        <section class="features">
+                            <h2>Functionalities of the Site</h2>
+                            <ul>
+                                <li><strong>View Work Experience:</strong> Browse through listed work experiences.</li>
+                                <li><strong>Add Work Experience:</strong> Submit new work experiences to the database.</li>
+                                <li><strong>Edit Work Experience:</strong> Update details of existing work experiences.</li>
+                                <li><strong>Delete Work Experience:</strong> Remove work experiences from the listing.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2 id="er-diagram">ER Diagramme</h2>
+                            <table>
+                              <caption>
+                                Table: workexperience
+                              </caption>
+                              <thead>
+                                <tr>
+                                  <th>Column</th>
+                                  <th>Type</th>
+                                  <th>Constraints</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>id</td>
+                                  <td>SERIAL</td>
+                                  <td>PK</td>
+                                </tr>
+                                <tr>
+                                  <td>companyname</td>
+                                  <td>VARCHAR(255)</td>
+                                  <td>NOT NULL</td>
+                                </tr>
+                                <tr>
+                                  <td>jobtitle</td>
+                                  <td>VARCHAR(255)</td>
+                                  <td>NOT NULL</td>
+                                </tr>
+                                <tr>
+                                  <td>location</td>
+                                  <td>VARCHAR(255)</td>
+                                  <td>NOT NULL</td>
+                                </tr>
+                                <tr>
+                                  <td>startdate</td>
+                                  <td>DATE</td>
+                                  <td>NOT NULL</td>
+                                </tr>
+                                <tr>
+                                  <td>enddate</td>
+                                  <td>DATE</td>
+                                  <td></td>
+                                </tr>
+                                <tr>
+                                  <td>description</td>
+                                  <td>TEXT</td>
+                                  <td></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </section>
+                  
+            
+                        <section class="conclusions">
+                            <h2>Conclusions from the Project</h2>
+                            <p>The project has affirmed several technical aspects:</p>
+                            <ul>
+                                <li>Express.js and Node.js are effective for creating server-based applications that handle HTTP requests and serve content.</li>
+                                <li>Using external APIs allows for scalable data management.</li>
+                                <li>Proper error handling and user feedback are crucial for ensuring system reliability.</li>
+                                <li>Security considerations in handling user data and external connections are critical.</li>
+                            </ul>
+                        </section>
+                    </div>
+            
+                    <footer>
+                        <p>&copy; 2024 All rights reserved. Contact us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+                    </footer>
+                </main>
+            </body>
+            </html>
+            
