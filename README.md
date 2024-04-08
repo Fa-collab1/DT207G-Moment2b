@@ -65,7 +65,7 @@ Här är en lista över de viktigaste beroendena för projektet:
 
 ### Installation
 
-För att använda applikationen kan du antingen besöka den publicerade sidan [länk till Heroku-app](https://joni2307-be-m1-aba40a1f039a.herokuapp.com/courses) eller köra den lokalt på din maskin genom att följa dessa steg:
+För att använda applikationen kan du antingen besöka den publicerade sidan [länk till Heroku-app](https://joni2307-be-m2-66fca900dfdb.herokuapp.com/) eller köra den lokalt på din maskin genom att följa dessa steg:
 
 1. Klona projektet till din lokala maskin.
 2. Installera alla beroenden genom att köra `npm install`.
