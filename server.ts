@@ -199,6 +199,11 @@ app.put("/workexperience/put/:id", (req: any, res: any) => {
     });
 });
 
+// Route för "start" sidan som omdirigerar till "workexperience" sidan
+app.get("/", (req: any, res: any) => {
+  res.redirect("workexperience"); // Rendera "Courses" sidan
+});
+
 
 function newFunction(error: any) {
   let errormessage: string[] = [];
@@ -369,11 +374,6 @@ app.get("/courses", (req: any, res: any) => {
 // Route för "About" sidan
 app.get("/about", (req: any, res: any) => {
   res.render("about"); // Rendera "About" sidan
-});
-
-// Route för "start" sidan som omdirigerar till "courses" sidan
-app.get("/", (req: any, res: any) => {
-  res.redirect("courses"); // Rendera "Courses" sidan
 });
 
 // Route för att rendera sidan för att lägga till ny kurs
