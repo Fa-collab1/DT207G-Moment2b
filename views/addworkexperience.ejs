@@ -36,41 +36,46 @@
 
             <section class="welcome">
                 <h1>Add Work Experience</h1>
-                <% if (errormessage.length > 0) { %>
+                <% if (errormessage.length> 0) { %>
                     <div class="alert">
-                      <% for (const error of errormessage) { %>
-                        <p><%= error %></p>
-                      <% } %>
-                      </div>
-                  <% } %>
-                       
-                <form action="/workexperience/save" method="post">
-                    <div class="form-group">
-                        <label for="companyname">Company Name:</label>
-                        <input type="text" id="companyname" name="companyname" value="<%= companyname || '' %>" required>
+                        <% for (const error of errormessage) { %>
+                            <p>
+                                <%= error %>
+                            </p>
+                            <% } %>
                     </div>
-                    <div class="form-group">
-                        <label for="jobtitle">Job Title:</label>
-                        <input type="text" id="jobtitle" name="jobtitle" value="<%= jobtitle || '' %>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Location:</label>
-                        <input type="text" id="location" name="location" value="<%= location || '' %>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="startdate">Start Date:</label>
-                        <input type="date" id="startdate" name="startdate" value="<%= startdate || new Date().toISOString().slice(0, 10) %>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="enddate">End Date:</label>
-                        <input type="date" id="enddate" name="enddate" value="<%= enddate || '' %>">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <textarea id="description" name="description" rows="4"><%= description || '' %></textarea>
-                    </div>
-                    <button type="submit">Add Work Experience</button>
-                </form>
+                    <% } %>
+
+                        <form action="/workexperience/save" method="post">
+                            <div class="form-group">
+                                <label for="companyname">Company Name:</label>
+                                <input type="text" id="companyname" name="companyname" value="<%= companyname || '' %>"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobtitle">Job Title:</label>
+                                <input type="text" id="jobtitle" name="jobtitle" value="<%= jobtitle || '' %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location:</label>
+                                <input type="text" id="location" name="location" value="<%= location || '' %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="startdate">Start Date:</label>
+                                <input type="date" id="startdate" name="startdate"
+                                    value="<%= startdate || new Date().toISOString().slice(0, 10) %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="enddate">End Date:</label>
+                                <input type="date" id="enddate" name="enddate" value="<%= enddate || '' %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description"
+                                    rows="4"><%= description || '' %></textarea>
+                            </div>
+                            <button type="submit">Add Work Experience</button>
+                        </form>
             </section>
 
         </div>
